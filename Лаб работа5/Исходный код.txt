@@ -1,0 +1,28 @@
+HSET session:s101 user_id "cust_1001" role "customer" language "ru" active_zone "zone_north"
+EXPIRE session:s101 1800
+
+HSET session:s102 user_id "cust_1002" role "customer" language "kk" active_zone "zone_south"
+EXPIRE session:s102 1800
+
+HSET session:s501 user_id "cour_501" role "courier" language "ru" status "on_shift"
+EXPIRE session:s501 3600
+
+HSET cache:delivery-zone:zone_north name "Северный район" min_order "3000" delivery_fee "500" avg_time "30m"
+EXPIRE cache:delivery-zone:zone_north 3600
+
+HSET cache:courier:cour_501 name "Алексей" vehicle "bicycle" phone "+77071112233" rating "4.9"
+EXPIRE cache:courier:cour_501 600
+
+LPUSH recent:customer:cust_1001 "order_8001"
+LPUSH recent:customer:cust_1001 "order_8002"
+LPUSH recent:customer:cust_1001 "order_8003"
+LTRIM recent:customer:cust_1001 0 4
+
+SET courier:cour_501:activity 0
+INCR courier:cour_501:activity
+INCR courier:cour_501:activity
+
+SET counter:zone_north:requests 0
+INCR counter:zone_north:requests
+
+SADD active:couriers:zone_north "cour_501" "cour_502"
