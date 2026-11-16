@@ -1,0 +1,24 @@
+[
+  {
+    "mode": "no_index",
+    "winningPlan": "COLLSCAN",
+    "inputStage": null,
+    "nReturned": 25,
+    "totalDocsExamined": 20000,
+    "totalKeysExamined": 0,
+    "executionTimeMillis": 4,
+    "storageSizeBytes": 622592,
+    "totalIndexSizeBytes": 212992
+  },
+  {
+    "mode": "with_index",
+    "winningPlan": "FETCH",
+    "inputStage": "IXSCAN",
+    "nReturned": 25,
+    "totalDocsExamined": 25,
+    "totalKeysExamined": 25,
+    "executionTimeMillis": 4,
+    "storageSizeBytes": 622592,
+    "totalIndexSizeBytes": 385024
+  }
+]
